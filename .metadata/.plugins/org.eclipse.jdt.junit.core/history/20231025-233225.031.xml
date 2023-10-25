@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="CourseRepoJavaTest" project="getting-start-spring-jpa" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="com.jdc.weekend.test.CourseRepoJavaTest" time="0.177" displayname="CourseRepoJavaTest" uniqueid="[engine:junit-jupiter]/[class:com.jdc.weekend.test.CourseRepoJavaTest]">
+    <testsuite name="create_test(com.jdc.weekend.test.CourseRepoJavaTest)" time="0.178" displayname="create_test(int, String, int, int)" parameters="int,java.lang.String,int,int" uniqueid="[engine:junit-jupiter]/[class:com.jdc.weekend.test.CourseRepoJavaTest]/[test-template:create_test(int, java.lang.String, int, int)]">
+      <testcase name="create_test" classname="com.jdc.weekend.test.CourseRepoJavaTest" time="0.178" dynamicTest="true" displayname="[1] 1, Java Basic, 4, 50000" parameters="int,java.lang.String,int,int" uniqueid="[engine:junit-jupiter]/[class:com.jdc.weekend.test.CourseRepoJavaTest]/[test-template:create_test(int, java.lang.String, int, int)]/[test-template-invocation:#1]"/>
+    </testsuite>
+  </testsuite>
+</testrun>
