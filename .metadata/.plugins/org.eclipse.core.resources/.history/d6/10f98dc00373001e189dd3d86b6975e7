@@ -1,0 +1,5 @@
+package com.jdc.weekend.entity;
+
+public class Course {
+
+}

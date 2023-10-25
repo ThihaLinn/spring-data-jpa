@@ -1,0 +1,49 @@
+package com.jdc.weekend.config;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.sql.DataSource;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
+import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
+import org.springframework.orm.jpa.JpaVendorAdapter;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+
+import jakarta.persistence.spi.PersistenceProvider;
+
+@Configuration
+public class JapConfiguration {
+
+	@Bean
+	DataSource datasource() {
+		return new EmbeddedDatabaseBuilder()
+				.setType(EmbeddedDatabaseType.HSQL).build();
+	}
+	
+	LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource datasource) {
+		var bean =new  LocalContainerEntityManagerFactoryBean();
+		bean.setDataSource(datasource);
+		bean.setPackagesToScan("com.jc.weekend.entity");
+		bean.setJpaPropertyMap(japProperties());
+		bean.getJpaVendorAdapter(new JpaVendorAdapter() {
+			
+			@Override
+			public PersistenceProvider getPersistenceProvider() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+		});
+		return null;
+	}
+
+	private Map<String, Object> japProperties() {
+		var map = new HashMap<String, Object>();
+		map.put("hibernate.hbm2ddl.auto", "create");
+		map.put("hibernate.show_sql", true);
+		map.put("hibernate.format_sql", true);
+		return map;
+	}
+}
