@@ -1,0 +1,15 @@
+Ayeyarwady 	Region	Pathein	South
+Bago 	Region	Bago	South 
+Chin 	State	Hakha	North West
+Kachin 	State	Myitkyina	North
+Kayah 	State	Loikaw	East
+Kayin 	State	Hpa-an	South 
+Magway 	Region	Magwe	Central
+Mandalay 	Region	Mandalay	Central
+Mon 	State	Mawlamyine	South
+Naypyidaw 	Union Territory	Naypyidaw	Central
+Rakhine 	State	Sittwe	West
+Sagaing 	Region	Monywa	North 
+Shan 	State	Taunggyi	North 
+Tanintharyi 	Region	Dawei	South
+Yangon 	Region	Yangon	Central
