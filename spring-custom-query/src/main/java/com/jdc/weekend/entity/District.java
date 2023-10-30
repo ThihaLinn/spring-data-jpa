@@ -11,8 +11,8 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "district")
-@NamedQuery(name = "findByStateAndName",
-			query = "select d from District d where d.state.id =?1 and lower(d.name) like lower(?2)"
+@NamedQuery(name = "District.findByNameQuery",
+			query = "select d from District d where d.state.id =:id and lower(d.name) like lower(:name)"
 		)
 public class District {
 

@@ -59,7 +59,7 @@ public class DistrictRepoTest {
 	})
 	void find_By_name_query(int id,String name ,int count) {
 		System.err.println("find_By_name_query");
-		var result = repo.findByStateAndName(id,name.concat("%"));
+		var result = repo.findByAnnotationQuery(id,name.concat("%"));
 		assertThat(result, hasSize(count));
 	}
 }
