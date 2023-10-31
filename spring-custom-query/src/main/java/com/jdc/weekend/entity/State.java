@@ -7,6 +7,8 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.NamedNativeQuery;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,6 +17,12 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@NamedNativeQuery(
+		name = "State.findByNativeSql",
+		query = "select * from state where type = ? ",
+		resultClass = State.class
+		)
+@Table(name = "state")
 public class State {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
