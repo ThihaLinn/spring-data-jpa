@@ -1,9 +1,0 @@
-package com.jdc.weekend.entity;
-
-public class Course {
-
-	@entity
-	private int id;
-	
-	
-}

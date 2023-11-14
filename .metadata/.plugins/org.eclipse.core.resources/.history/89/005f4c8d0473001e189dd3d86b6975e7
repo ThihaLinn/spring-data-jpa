@@ -1,5 +1,0 @@
-package com.jdc.weekend.repo;
-
-public interface CourseRepo {
-
-}

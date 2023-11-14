@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectWizardLocationPage">
 		<list key="location">
+			<item value="/home/thiha/Documents/spring-data-jpa-workspace/spring-data-projection"/>
 			<item value="/home/thiha/Documents/spring-data-jpa-workspace/getting-start-spring-jpa"/>
 		</list>
 		<list key="projectNameTemplate">
@@ -44,12 +45,13 @@
 	</section>
 	<section name="MavenProjectWizardArtifactPage">
 		<list key="groupId">
-			<item value="com.jdc.weekemd"/>
 			<item value="com.jdc.weekend"/>
+			<item value="com.jdc.weekemd"/>
 		</list>
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="spring-custom-repository"/>
 			<item value="spring-data-repository"/>
 			<item value="getting-start-spring-jpa"/>
 		</list>

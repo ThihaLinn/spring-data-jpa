@@ -1,9 +1,9 @@
 -------------------------------------------------------------------------------
 Test set: com.jdc.weekend.test.DistrictRepoTest
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 0, Errors: 4, Skipped: 0, Time elapsed: 6.725 s <<< FAILURE! -- in com.jdc.weekend.test.DistrictRepoTest
-com.jdc.weekend.test.DistrictRepoTest.find_By_name_query(int, String, int)[1] -- Time elapsed: 0.015 s <<< ERROR!
-java.lang.IllegalStateException: Failed to load ApplicationContext for [MergedContextConfiguration@227fc322 testClass = com.jdc.weekend.test.DistrictRepoTest, locations = [], classes = [com.jdc.weekend.config.JpaCongfiguration], contextInitializerClasses = [], activeProfiles = [], propertySourceLocations = [], propertySourceProperties = [], contextCustomizers = [], contextLoader = org.springframework.test.context.support.DelegatingSmartContextLoader, parent = null]
+Tests run: 4, Failures: 0, Errors: 4, Skipped: 0, Time elapsed: 3.891 s <<< FAILURE! -- in com.jdc.weekend.test.DistrictRepoTest
+com.jdc.weekend.test.DistrictRepoTest.find_By_name_query(int, String, int)[1] -- Time elapsed: 0.012 s <<< ERROR!
+java.lang.IllegalStateException: Failed to load ApplicationContext for [MergedContextConfiguration@24e1e90a testClass = com.jdc.weekend.test.DistrictRepoTest, locations = [], classes = [com.jdc.weekend.config.JpaCongfiguration], contextInitializerClasses = [], activeProfiles = [], propertySourceLocations = [], propertySourceProperties = [], contextCustomizers = [], contextLoader = org.springframework.test.context.support.DelegatingSmartContextLoader, parent = null]
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:143)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:127)
 	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:141)
@@ -123,7 +123,7 @@ java.lang.IllegalStateException: Failed to load ApplicationContext for [MergedCo
 	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'districtRepo' defined in com.jdc.weekend.repo.DistrictRepo defined in @EnableJpaRepositories declared on JpaCongfiguration: Could not create query for public abstract java.util.List com.jdc.weekend.repo.DistrictRepo.findByStateAndName(int,java.lang.String); Reason: Failed to create query for method public abstract java.util.List com.jdc.weekend.repo.DistrictRepo.findByStateAndName(int,java.lang.String); Cannot compare left expression of type 'com.jdc.weekend.entity.State' with right expression of type 'java.lang.Integer'
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'stateNativeRepo' defined in com.jdc.weekend.repo.StateNativeRepo defined in @EnableJpaRepositories declared on JpaCongfiguration: Could not create query for public abstract java.util.List com.jdc.weekend.repo.StateNativeRepo.findByNativeSql(java.lang.String); Reason: Failed to create query for method public abstract java.util.List com.jdc.weekend.repo.StateNativeRepo.findByNativeSql(java.lang.String); No property 'nativeSql' found for type 'State'
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1770)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:598)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520)
@@ -140,7 +140,7 @@ Caused by: org.springframework.beans.factory.BeanCreationException: Error creati
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:187)
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:119)
 	... 118 more
-Caused by: org.springframework.data.repository.query.QueryCreationException: Could not create query for public abstract java.util.List com.jdc.weekend.repo.DistrictRepo.findByStateAndName(int,java.lang.String); Reason: Failed to create query for method public abstract java.util.List com.jdc.weekend.repo.DistrictRepo.findByStateAndName(int,java.lang.String); Cannot compare left expression of type 'com.jdc.weekend.entity.State' with right expression of type 'java.lang.Integer'
+Caused by: org.springframework.data.repository.query.QueryCreationException: Could not create query for public abstract java.util.List com.jdc.weekend.repo.StateNativeRepo.findByNativeSql(java.lang.String); Reason: Failed to create query for method public abstract java.util.List com.jdc.weekend.repo.StateNativeRepo.findByNativeSql(java.lang.String); No property 'nativeSql' found for type 'State'
 	at org.springframework.data.repository.query.QueryCreationException.create(QueryCreationException.java:101)
 	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lookupQuery(QueryExecutorMethodInterceptor.java:115)
 	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.mapMethodsToQuery(QueryExecutorMethodInterceptor.java:99)
@@ -156,33 +156,48 @@ Caused by: org.springframework.data.repository.query.QueryCreationException: Cou
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1817)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1766)
 	... 132 more
-Caused by: java.lang.IllegalArgumentException: Failed to create query for method public abstract java.util.List com.jdc.weekend.repo.DistrictRepo.findByStateAndName(int,java.lang.String); Cannot compare left expression of type 'com.jdc.weekend.entity.State' with right expression of type 'java.lang.Integer'
+Caused by: java.lang.IllegalArgumentException: Failed to create query for method public abstract java.util.List com.jdc.weekend.repo.StateNativeRepo.findByNativeSql(java.lang.String); No property 'nativeSql' found for type 'State'
 	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery.<init>(PartTreeJpaQuery.java:107)
 	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$CreateQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:124)
 	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$CreateIfNotFoundQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:258)
 	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$AbstractQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:95)
 	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lookupQuery(QueryExecutorMethodInterceptor.java:111)
 	... 144 more
-Caused by: org.hibernate.query.SemanticException: Cannot compare left expression of type 'com.jdc.weekend.entity.State' with right expression of type 'java.lang.Integer'
-	at org.hibernate.query.sqm.internal.TypecheckUtil.assertComparable(TypecheckUtil.java:338)
-	at org.hibernate.query.sqm.tree.predicate.SqmComparisonPredicate.<init>(SqmComparisonPredicate.java:48)
-	at org.hibernate.query.sqm.tree.predicate.SqmComparisonPredicate.<init>(SqmComparisonPredicate.java:34)
-	at org.hibernate.query.sqm.internal.SqmCriteriaNodeBuilder.equal(SqmCriteriaNodeBuilder.java:2070)
-	at org.hibernate.query.sqm.internal.SqmCriteriaNodeBuilder.equal(SqmCriteriaNodeBuilder.java:189)
-	at org.springframework.data.jpa.repository.query.JpaQueryCreator$PredicateBuilder.build(JpaQueryCreator.java:312)
-	at org.springframework.data.jpa.repository.query.JpaQueryCreator.toPredicate(JpaQueryCreator.java:210)
-	at org.springframework.data.jpa.repository.query.JpaQueryCreator.create(JpaQueryCreator.java:121)
-	at org.springframework.data.jpa.repository.query.JpaQueryCreator.create(JpaQueryCreator.java:60)
-	at org.springframework.data.repository.query.parser.AbstractQueryCreator.createCriteria(AbstractQueryCreator.java:119)
-	at org.springframework.data.repository.query.parser.AbstractQueryCreator.createQuery(AbstractQueryCreator.java:95)
-	at org.springframework.data.repository.query.parser.AbstractQueryCreator.createQuery(AbstractQueryCreator.java:81)
-	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery$QueryPreparer.<init>(PartTreeJpaQuery.java:218)
-	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery$CountQueryPreparer.<init>(PartTreeJpaQuery.java:361)
-	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery.<init>(PartTreeJpaQuery.java:102)
+Caused by: org.springframework.data.mapping.PropertyReferenceException: No property 'nativeSql' found for type 'State'
+	at org.springframework.data.mapping.PropertyPath.<init>(PropertyPath.java:90)
+	at org.springframework.data.mapping.PropertyPath.create(PropertyPath.java:405)
+	at org.springframework.data.mapping.PropertyPath.create(PropertyPath.java:381)
+	at org.springframework.data.mapping.PropertyPath.lambda$from$0(PropertyPath.java:334)
+	at java.base/java.util.concurrent.ConcurrentMap.computeIfAbsent(ConcurrentMap.java:330)
+	at org.springframework.data.mapping.PropertyPath.from(PropertyPath.java:316)
+	at org.springframework.data.mapping.PropertyPath.from(PropertyPath.java:299)
+	at org.springframework.data.repository.query.parser.Part.<init>(Part.java:81)
+	at org.springframework.data.repository.query.parser.PartTree$OrPart.lambda$new$0(PartTree.java:242)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:992)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
+	at org.springframework.data.repository.query.parser.PartTree$OrPart.<init>(PartTree.java:243)
+	at org.springframework.data.repository.query.parser.PartTree$Predicate.lambda$new$0(PartTree.java:372)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:992)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
+	at org.springframework.data.repository.query.parser.PartTree$Predicate.<init>(PartTree.java:373)
+	at org.springframework.data.repository.query.parser.PartTree.<init>(PartTree.java:96)
+	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery.<init>(PartTreeJpaQuery.java:100)
 	... 148 more
 
-com.jdc.weekend.test.DistrictRepoTest.find_By_id_and_name_Starting_with_ignore_case(int, String, int)[1] -- Time elapsed: 0.002 s <<< ERROR!
-java.lang.IllegalStateException: Failed to load ApplicationContext for [MergedContextConfiguration@227fc322 testClass = com.jdc.weekend.test.DistrictRepoTest, locations = [], classes = [com.jdc.weekend.config.JpaCongfiguration], contextInitializerClasses = [], activeProfiles = [], propertySourceLocations = [], propertySourceProperties = [], contextCustomizers = [], contextLoader = org.springframework.test.context.support.DelegatingSmartContextLoader, parent = null]
+com.jdc.weekend.test.DistrictRepoTest.find_By_id_and_name_Starting_with_ignore_case(int, String, int)[1] -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.IllegalStateException: Failed to load ApplicationContext for [MergedContextConfiguration@24e1e90a testClass = com.jdc.weekend.test.DistrictRepoTest, locations = [], classes = [com.jdc.weekend.config.JpaCongfiguration], contextInitializerClasses = [], activeProfiles = [], propertySourceLocations = [], propertySourceProperties = [], contextCustomizers = [], contextLoader = org.springframework.test.context.support.DelegatingSmartContextLoader, parent = null]
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:143)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:127)
 	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:141)
@@ -302,7 +317,7 @@ java.lang.IllegalStateException: Failed to load ApplicationContext for [MergedCo
 	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'districtRepo' defined in com.jdc.weekend.repo.DistrictRepo defined in @EnableJpaRepositories declared on JpaCongfiguration: Could not create query for public abstract java.util.List com.jdc.weekend.repo.DistrictRepo.findByStateAndName(int,java.lang.String); Reason: Failed to create query for method public abstract java.util.List com.jdc.weekend.repo.DistrictRepo.findByStateAndName(int,java.lang.String); Cannot compare left expression of type 'com.jdc.weekend.entity.State' with right expression of type 'java.lang.Integer'
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'stateNativeRepo' defined in com.jdc.weekend.repo.StateNativeRepo defined in @EnableJpaRepositories declared on JpaCongfiguration: Could not create query for public abstract java.util.List com.jdc.weekend.repo.StateNativeRepo.findByNativeSql(java.lang.String); Reason: Failed to create query for method public abstract java.util.List com.jdc.weekend.repo.StateNativeRepo.findByNativeSql(java.lang.String); No property 'nativeSql' found for type 'State'
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1770)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:598)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520)
@@ -319,7 +334,7 @@ Caused by: org.springframework.beans.factory.BeanCreationException: Error creati
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:187)
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:119)
 	... 118 more
-Caused by: org.springframework.data.repository.query.QueryCreationException: Could not create query for public abstract java.util.List com.jdc.weekend.repo.DistrictRepo.findByStateAndName(int,java.lang.String); Reason: Failed to create query for method public abstract java.util.List com.jdc.weekend.repo.DistrictRepo.findByStateAndName(int,java.lang.String); Cannot compare left expression of type 'com.jdc.weekend.entity.State' with right expression of type 'java.lang.Integer'
+Caused by: org.springframework.data.repository.query.QueryCreationException: Could not create query for public abstract java.util.List com.jdc.weekend.repo.StateNativeRepo.findByNativeSql(java.lang.String); Reason: Failed to create query for method public abstract java.util.List com.jdc.weekend.repo.StateNativeRepo.findByNativeSql(java.lang.String); No property 'nativeSql' found for type 'State'
 	at org.springframework.data.repository.query.QueryCreationException.create(QueryCreationException.java:101)
 	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lookupQuery(QueryExecutorMethodInterceptor.java:115)
 	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.mapMethodsToQuery(QueryExecutorMethodInterceptor.java:99)
@@ -335,33 +350,48 @@ Caused by: org.springframework.data.repository.query.QueryCreationException: Cou
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1817)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1766)
 	... 132 more
-Caused by: java.lang.IllegalArgumentException: Failed to create query for method public abstract java.util.List com.jdc.weekend.repo.DistrictRepo.findByStateAndName(int,java.lang.String); Cannot compare left expression of type 'com.jdc.weekend.entity.State' with right expression of type 'java.lang.Integer'
+Caused by: java.lang.IllegalArgumentException: Failed to create query for method public abstract java.util.List com.jdc.weekend.repo.StateNativeRepo.findByNativeSql(java.lang.String); No property 'nativeSql' found for type 'State'
 	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery.<init>(PartTreeJpaQuery.java:107)
 	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$CreateQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:124)
 	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$CreateIfNotFoundQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:258)
 	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$AbstractQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:95)
 	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lookupQuery(QueryExecutorMethodInterceptor.java:111)
 	... 144 more
-Caused by: org.hibernate.query.SemanticException: Cannot compare left expression of type 'com.jdc.weekend.entity.State' with right expression of type 'java.lang.Integer'
-	at org.hibernate.query.sqm.internal.TypecheckUtil.assertComparable(TypecheckUtil.java:338)
-	at org.hibernate.query.sqm.tree.predicate.SqmComparisonPredicate.<init>(SqmComparisonPredicate.java:48)
-	at org.hibernate.query.sqm.tree.predicate.SqmComparisonPredicate.<init>(SqmComparisonPredicate.java:34)
-	at org.hibernate.query.sqm.internal.SqmCriteriaNodeBuilder.equal(SqmCriteriaNodeBuilder.java:2070)
-	at org.hibernate.query.sqm.internal.SqmCriteriaNodeBuilder.equal(SqmCriteriaNodeBuilder.java:189)
-	at org.springframework.data.jpa.repository.query.JpaQueryCreator$PredicateBuilder.build(JpaQueryCreator.java:312)
-	at org.springframework.data.jpa.repository.query.JpaQueryCreator.toPredicate(JpaQueryCreator.java:210)
-	at org.springframework.data.jpa.repository.query.JpaQueryCreator.create(JpaQueryCreator.java:121)
-	at org.springframework.data.jpa.repository.query.JpaQueryCreator.create(JpaQueryCreator.java:60)
-	at org.springframework.data.repository.query.parser.AbstractQueryCreator.createCriteria(AbstractQueryCreator.java:119)
-	at org.springframework.data.repository.query.parser.AbstractQueryCreator.createQuery(AbstractQueryCreator.java:95)
-	at org.springframework.data.repository.query.parser.AbstractQueryCreator.createQuery(AbstractQueryCreator.java:81)
-	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery$QueryPreparer.<init>(PartTreeJpaQuery.java:218)
-	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery$CountQueryPreparer.<init>(PartTreeJpaQuery.java:361)
-	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery.<init>(PartTreeJpaQuery.java:102)
+Caused by: org.springframework.data.mapping.PropertyReferenceException: No property 'nativeSql' found for type 'State'
+	at org.springframework.data.mapping.PropertyPath.<init>(PropertyPath.java:90)
+	at org.springframework.data.mapping.PropertyPath.create(PropertyPath.java:405)
+	at org.springframework.data.mapping.PropertyPath.create(PropertyPath.java:381)
+	at org.springframework.data.mapping.PropertyPath.lambda$from$0(PropertyPath.java:334)
+	at java.base/java.util.concurrent.ConcurrentMap.computeIfAbsent(ConcurrentMap.java:330)
+	at org.springframework.data.mapping.PropertyPath.from(PropertyPath.java:316)
+	at org.springframework.data.mapping.PropertyPath.from(PropertyPath.java:299)
+	at org.springframework.data.repository.query.parser.Part.<init>(Part.java:81)
+	at org.springframework.data.repository.query.parser.PartTree$OrPart.lambda$new$0(PartTree.java:242)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:992)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
+	at org.springframework.data.repository.query.parser.PartTree$OrPart.<init>(PartTree.java:243)
+	at org.springframework.data.repository.query.parser.PartTree$Predicate.lambda$new$0(PartTree.java:372)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:992)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
+	at org.springframework.data.repository.query.parser.PartTree$Predicate.<init>(PartTree.java:373)
+	at org.springframework.data.repository.query.parser.PartTree.<init>(PartTree.java:96)
+	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery.<init>(PartTreeJpaQuery.java:100)
 	... 148 more
 
 com.jdc.weekend.test.DistrictRepoTest.find_by_state_region(String, int)[1] -- Time elapsed: 0 s <<< ERROR!
-java.lang.IllegalStateException: Failed to load ApplicationContext for [MergedContextConfiguration@227fc322 testClass = com.jdc.weekend.test.DistrictRepoTest, locations = [], classes = [com.jdc.weekend.config.JpaCongfiguration], contextInitializerClasses = [], activeProfiles = [], propertySourceLocations = [], propertySourceProperties = [], contextCustomizers = [], contextLoader = org.springframework.test.context.support.DelegatingSmartContextLoader, parent = null]
+java.lang.IllegalStateException: Failed to load ApplicationContext for [MergedContextConfiguration@24e1e90a testClass = com.jdc.weekend.test.DistrictRepoTest, locations = [], classes = [com.jdc.weekend.config.JpaCongfiguration], contextInitializerClasses = [], activeProfiles = [], propertySourceLocations = [], propertySourceProperties = [], contextCustomizers = [], contextLoader = org.springframework.test.context.support.DelegatingSmartContextLoader, parent = null]
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:143)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:127)
 	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:141)
@@ -481,7 +511,7 @@ java.lang.IllegalStateException: Failed to load ApplicationContext for [MergedCo
 	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'districtRepo' defined in com.jdc.weekend.repo.DistrictRepo defined in @EnableJpaRepositories declared on JpaCongfiguration: Could not create query for public abstract java.util.List com.jdc.weekend.repo.DistrictRepo.findByStateAndName(int,java.lang.String); Reason: Failed to create query for method public abstract java.util.List com.jdc.weekend.repo.DistrictRepo.findByStateAndName(int,java.lang.String); Cannot compare left expression of type 'com.jdc.weekend.entity.State' with right expression of type 'java.lang.Integer'
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'stateNativeRepo' defined in com.jdc.weekend.repo.StateNativeRepo defined in @EnableJpaRepositories declared on JpaCongfiguration: Could not create query for public abstract java.util.List com.jdc.weekend.repo.StateNativeRepo.findByNativeSql(java.lang.String); Reason: Failed to create query for method public abstract java.util.List com.jdc.weekend.repo.StateNativeRepo.findByNativeSql(java.lang.String); No property 'nativeSql' found for type 'State'
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1770)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:598)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520)
@@ -498,7 +528,7 @@ Caused by: org.springframework.beans.factory.BeanCreationException: Error creati
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:187)
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:119)
 	... 118 more
-Caused by: org.springframework.data.repository.query.QueryCreationException: Could not create query for public abstract java.util.List com.jdc.weekend.repo.DistrictRepo.findByStateAndName(int,java.lang.String); Reason: Failed to create query for method public abstract java.util.List com.jdc.weekend.repo.DistrictRepo.findByStateAndName(int,java.lang.String); Cannot compare left expression of type 'com.jdc.weekend.entity.State' with right expression of type 'java.lang.Integer'
+Caused by: org.springframework.data.repository.query.QueryCreationException: Could not create query for public abstract java.util.List com.jdc.weekend.repo.StateNativeRepo.findByNativeSql(java.lang.String); Reason: Failed to create query for method public abstract java.util.List com.jdc.weekend.repo.StateNativeRepo.findByNativeSql(java.lang.String); No property 'nativeSql' found for type 'State'
 	at org.springframework.data.repository.query.QueryCreationException.create(QueryCreationException.java:101)
 	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lookupQuery(QueryExecutorMethodInterceptor.java:115)
 	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.mapMethodsToQuery(QueryExecutorMethodInterceptor.java:99)
@@ -514,33 +544,48 @@ Caused by: org.springframework.data.repository.query.QueryCreationException: Cou
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1817)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1766)
 	... 132 more
-Caused by: java.lang.IllegalArgumentException: Failed to create query for method public abstract java.util.List com.jdc.weekend.repo.DistrictRepo.findByStateAndName(int,java.lang.String); Cannot compare left expression of type 'com.jdc.weekend.entity.State' with right expression of type 'java.lang.Integer'
+Caused by: java.lang.IllegalArgumentException: Failed to create query for method public abstract java.util.List com.jdc.weekend.repo.StateNativeRepo.findByNativeSql(java.lang.String); No property 'nativeSql' found for type 'State'
 	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery.<init>(PartTreeJpaQuery.java:107)
 	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$CreateQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:124)
 	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$CreateIfNotFoundQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:258)
 	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$AbstractQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:95)
 	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lookupQuery(QueryExecutorMethodInterceptor.java:111)
 	... 144 more
-Caused by: org.hibernate.query.SemanticException: Cannot compare left expression of type 'com.jdc.weekend.entity.State' with right expression of type 'java.lang.Integer'
-	at org.hibernate.query.sqm.internal.TypecheckUtil.assertComparable(TypecheckUtil.java:338)
-	at org.hibernate.query.sqm.tree.predicate.SqmComparisonPredicate.<init>(SqmComparisonPredicate.java:48)
-	at org.hibernate.query.sqm.tree.predicate.SqmComparisonPredicate.<init>(SqmComparisonPredicate.java:34)
-	at org.hibernate.query.sqm.internal.SqmCriteriaNodeBuilder.equal(SqmCriteriaNodeBuilder.java:2070)
-	at org.hibernate.query.sqm.internal.SqmCriteriaNodeBuilder.equal(SqmCriteriaNodeBuilder.java:189)
-	at org.springframework.data.jpa.repository.query.JpaQueryCreator$PredicateBuilder.build(JpaQueryCreator.java:312)
-	at org.springframework.data.jpa.repository.query.JpaQueryCreator.toPredicate(JpaQueryCreator.java:210)
-	at org.springframework.data.jpa.repository.query.JpaQueryCreator.create(JpaQueryCreator.java:121)
-	at org.springframework.data.jpa.repository.query.JpaQueryCreator.create(JpaQueryCreator.java:60)
-	at org.springframework.data.repository.query.parser.AbstractQueryCreator.createCriteria(AbstractQueryCreator.java:119)
-	at org.springframework.data.repository.query.parser.AbstractQueryCreator.createQuery(AbstractQueryCreator.java:95)
-	at org.springframework.data.repository.query.parser.AbstractQueryCreator.createQuery(AbstractQueryCreator.java:81)
-	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery$QueryPreparer.<init>(PartTreeJpaQuery.java:218)
-	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery$CountQueryPreparer.<init>(PartTreeJpaQuery.java:361)
-	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery.<init>(PartTreeJpaQuery.java:102)
+Caused by: org.springframework.data.mapping.PropertyReferenceException: No property 'nativeSql' found for type 'State'
+	at org.springframework.data.mapping.PropertyPath.<init>(PropertyPath.java:90)
+	at org.springframework.data.mapping.PropertyPath.create(PropertyPath.java:405)
+	at org.springframework.data.mapping.PropertyPath.create(PropertyPath.java:381)
+	at org.springframework.data.mapping.PropertyPath.lambda$from$0(PropertyPath.java:334)
+	at java.base/java.util.concurrent.ConcurrentMap.computeIfAbsent(ConcurrentMap.java:330)
+	at org.springframework.data.mapping.PropertyPath.from(PropertyPath.java:316)
+	at org.springframework.data.mapping.PropertyPath.from(PropertyPath.java:299)
+	at org.springframework.data.repository.query.parser.Part.<init>(Part.java:81)
+	at org.springframework.data.repository.query.parser.PartTree$OrPart.lambda$new$0(PartTree.java:242)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:992)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
+	at org.springframework.data.repository.query.parser.PartTree$OrPart.<init>(PartTree.java:243)
+	at org.springframework.data.repository.query.parser.PartTree$Predicate.lambda$new$0(PartTree.java:372)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:992)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
+	at org.springframework.data.repository.query.parser.PartTree$Predicate.<init>(PartTree.java:373)
+	at org.springframework.data.repository.query.parser.PartTree.<init>(PartTree.java:96)
+	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery.<init>(PartTreeJpaQuery.java:100)
 	... 148 more
 
 com.jdc.weekend.test.DistrictRepoTest.find_By_name_Starting_with_ignore_case(String, int)[1] -- Time elapsed: 0.001 s <<< ERROR!
-java.lang.IllegalStateException: Failed to load ApplicationContext for [MergedContextConfiguration@227fc322 testClass = com.jdc.weekend.test.DistrictRepoTest, locations = [], classes = [com.jdc.weekend.config.JpaCongfiguration], contextInitializerClasses = [], activeProfiles = [], propertySourceLocations = [], propertySourceProperties = [], contextCustomizers = [], contextLoader = org.springframework.test.context.support.DelegatingSmartContextLoader, parent = null]
+java.lang.IllegalStateException: Failed to load ApplicationContext for [MergedContextConfiguration@24e1e90a testClass = com.jdc.weekend.test.DistrictRepoTest, locations = [], classes = [com.jdc.weekend.config.JpaCongfiguration], contextInitializerClasses = [], activeProfiles = [], propertySourceLocations = [], propertySourceProperties = [], contextCustomizers = [], contextLoader = org.springframework.test.context.support.DelegatingSmartContextLoader, parent = null]
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:143)
 	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:127)
 	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:141)
@@ -660,7 +705,7 @@ java.lang.IllegalStateException: Failed to load ApplicationContext for [MergedCo
 	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'districtRepo' defined in com.jdc.weekend.repo.DistrictRepo defined in @EnableJpaRepositories declared on JpaCongfiguration: Could not create query for public abstract java.util.List com.jdc.weekend.repo.DistrictRepo.findByStateAndName(int,java.lang.String); Reason: Failed to create query for method public abstract java.util.List com.jdc.weekend.repo.DistrictRepo.findByStateAndName(int,java.lang.String); Cannot compare left expression of type 'com.jdc.weekend.entity.State' with right expression of type 'java.lang.Integer'
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'stateNativeRepo' defined in com.jdc.weekend.repo.StateNativeRepo defined in @EnableJpaRepositories declared on JpaCongfiguration: Could not create query for public abstract java.util.List com.jdc.weekend.repo.StateNativeRepo.findByNativeSql(java.lang.String); Reason: Failed to create query for method public abstract java.util.List com.jdc.weekend.repo.StateNativeRepo.findByNativeSql(java.lang.String); No property 'nativeSql' found for type 'State'
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1770)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:598)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:520)
@@ -677,7 +722,7 @@ Caused by: org.springframework.beans.factory.BeanCreationException: Error creati
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:187)
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:119)
 	... 118 more
-Caused by: org.springframework.data.repository.query.QueryCreationException: Could not create query for public abstract java.util.List com.jdc.weekend.repo.DistrictRepo.findByStateAndName(int,java.lang.String); Reason: Failed to create query for method public abstract java.util.List com.jdc.weekend.repo.DistrictRepo.findByStateAndName(int,java.lang.String); Cannot compare left expression of type 'com.jdc.weekend.entity.State' with right expression of type 'java.lang.Integer'
+Caused by: org.springframework.data.repository.query.QueryCreationException: Could not create query for public abstract java.util.List com.jdc.weekend.repo.StateNativeRepo.findByNativeSql(java.lang.String); Reason: Failed to create query for method public abstract java.util.List com.jdc.weekend.repo.StateNativeRepo.findByNativeSql(java.lang.String); No property 'nativeSql' found for type 'State'
 	at org.springframework.data.repository.query.QueryCreationException.create(QueryCreationException.java:101)
 	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lookupQuery(QueryExecutorMethodInterceptor.java:115)
 	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.mapMethodsToQuery(QueryExecutorMethodInterceptor.java:99)
@@ -693,28 +738,43 @@ Caused by: org.springframework.data.repository.query.QueryCreationException: Cou
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1817)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1766)
 	... 132 more
-Caused by: java.lang.IllegalArgumentException: Failed to create query for method public abstract java.util.List com.jdc.weekend.repo.DistrictRepo.findByStateAndName(int,java.lang.String); Cannot compare left expression of type 'com.jdc.weekend.entity.State' with right expression of type 'java.lang.Integer'
+Caused by: java.lang.IllegalArgumentException: Failed to create query for method public abstract java.util.List com.jdc.weekend.repo.StateNativeRepo.findByNativeSql(java.lang.String); No property 'nativeSql' found for type 'State'
 	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery.<init>(PartTreeJpaQuery.java:107)
 	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$CreateQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:124)
 	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$CreateIfNotFoundQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:258)
 	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$AbstractQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:95)
 	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.lookupQuery(QueryExecutorMethodInterceptor.java:111)
 	... 144 more
-Caused by: org.hibernate.query.SemanticException: Cannot compare left expression of type 'com.jdc.weekend.entity.State' with right expression of type 'java.lang.Integer'
-	at org.hibernate.query.sqm.internal.TypecheckUtil.assertComparable(TypecheckUtil.java:338)
-	at org.hibernate.query.sqm.tree.predicate.SqmComparisonPredicate.<init>(SqmComparisonPredicate.java:48)
-	at org.hibernate.query.sqm.tree.predicate.SqmComparisonPredicate.<init>(SqmComparisonPredicate.java:34)
-	at org.hibernate.query.sqm.internal.SqmCriteriaNodeBuilder.equal(SqmCriteriaNodeBuilder.java:2070)
-	at org.hibernate.query.sqm.internal.SqmCriteriaNodeBuilder.equal(SqmCriteriaNodeBuilder.java:189)
-	at org.springframework.data.jpa.repository.query.JpaQueryCreator$PredicateBuilder.build(JpaQueryCreator.java:312)
-	at org.springframework.data.jpa.repository.query.JpaQueryCreator.toPredicate(JpaQueryCreator.java:210)
-	at org.springframework.data.jpa.repository.query.JpaQueryCreator.create(JpaQueryCreator.java:121)
-	at org.springframework.data.jpa.repository.query.JpaQueryCreator.create(JpaQueryCreator.java:60)
-	at org.springframework.data.repository.query.parser.AbstractQueryCreator.createCriteria(AbstractQueryCreator.java:119)
-	at org.springframework.data.repository.query.parser.AbstractQueryCreator.createQuery(AbstractQueryCreator.java:95)
-	at org.springframework.data.repository.query.parser.AbstractQueryCreator.createQuery(AbstractQueryCreator.java:81)
-	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery$QueryPreparer.<init>(PartTreeJpaQuery.java:218)
-	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery$CountQueryPreparer.<init>(PartTreeJpaQuery.java:361)
-	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery.<init>(PartTreeJpaQuery.java:102)
+Caused by: org.springframework.data.mapping.PropertyReferenceException: No property 'nativeSql' found for type 'State'
+	at org.springframework.data.mapping.PropertyPath.<init>(PropertyPath.java:90)
+	at org.springframework.data.mapping.PropertyPath.create(PropertyPath.java:405)
+	at org.springframework.data.mapping.PropertyPath.create(PropertyPath.java:381)
+	at org.springframework.data.mapping.PropertyPath.lambda$from$0(PropertyPath.java:334)
+	at java.base/java.util.concurrent.ConcurrentMap.computeIfAbsent(ConcurrentMap.java:330)
+	at org.springframework.data.mapping.PropertyPath.from(PropertyPath.java:316)
+	at org.springframework.data.mapping.PropertyPath.from(PropertyPath.java:299)
+	at org.springframework.data.repository.query.parser.Part.<init>(Part.java:81)
+	at org.springframework.data.repository.query.parser.PartTree$OrPart.lambda$new$0(PartTree.java:242)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:992)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
+	at org.springframework.data.repository.query.parser.PartTree$OrPart.<init>(PartTree.java:243)
+	at org.springframework.data.repository.query.parser.PartTree$Predicate.lambda$new$0(PartTree.java:372)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
+	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:992)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
+	at org.springframework.data.repository.query.parser.PartTree$Predicate.<init>(PartTree.java:373)
+	at org.springframework.data.repository.query.parser.PartTree.<init>(PartTree.java:96)
+	at org.springframework.data.jpa.repository.query.PartTreeJpaQuery.<init>(PartTreeJpaQuery.java:100)
 	... 148 more
 
